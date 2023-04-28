@@ -1,0 +1,15 @@
+body {
+    background-color: #FFF5E4;
+}
+
+#navbar_nav {
+    margin-left: 75%;
+}
+
+#carouselExampleAutoplaying {
+    margin-top: -20%;
+}
+
+#carousel-inner {
+    left: 25%;
+}
