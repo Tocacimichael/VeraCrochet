@@ -74,11 +74,6 @@
                 <img src="./resources/imgs/ProfilePic.png" class="d-block w-25 " style="margin: 0 0 5% 38%;">
              </div>
 
-
-
-
-
-
         <div class="container text-center">
             <div class="row row-cols-2">
                 <div class="col" style="margin: 0 5% 0 -10%;">
@@ -123,7 +118,6 @@
                 </div>
             </div>
         </div>
-</div>
     
     </body>
 </html>
