@@ -1,3 +1,9 @@
+<?php
+    $con = mysqli_connect('localhost','root');
+    mysqli_select_db($con, 'veracrochet');
+    $sql = "SELECT * FROM producten WHERE featured=1";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +14,6 @@
         <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
 
@@ -24,26 +29,27 @@
                     <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="Features.php">Features</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="Pricing.php">Pricing</a>
                     </li>
                 </ul>
                 </div>
             </div>
         </nav>
 
+        <div class="carouselcontainer">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-inner">
                     <div class="carousel-item active">
-                    <img src="./resources/imgs/Bee's.jpeg" class="d-block w-50 ml-" >
+                    <img src="./resources/imgs/Bee's.jpeg" class="w-100" >
                     </div>
                     <div class="carousel-item">
-                    <img src="./resources/imgs/Cherry_0.1.jpeg" class="d-block w-50" >
+                    <img src="./resources/imgs/Cherry_0.1.jpeg" class="w-100" >
                     </div>
                     <div class="carousel-item">
-                    <img src="./resources/imgs/Strawberry_0.1.jpeg" class="d-block w-50" >
+                    <img src="./resources/imgs/Strawberry_0.1.jpeg" class="w-100" >
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -55,21 +61,26 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+        </div>
 
-             <div class="aboutMe" class="text-center">
-                <h1 style="margin: 5% 0 5% 0; text-align: center;">About Me</h1>
-                <p style="text-align: center; width: 80%;">
+
+        <div id="aboutMe">
+            <h1 id="header1">
+                About Me
+            </h1>
+
+            <p class="text-center">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fringilla eget lectus at lobortis. <br>
                 Duis egestas erat semper lacus tristique, vitae mattis magna eleifend. Proin aliquam semper lorem, <br>
                 in sagittis risus luctus ut. Nam id magna molestie quam lobortis pulvinar suscipit at diam. Fusce aliquet, <br>
                 elit eu vulputate rhoncus, magna erat placerat massa, eget facilisis purus ligula ut lacus. Donec mauris mauris, <br>
                 dignissim tristique volutpat ut, sollicitudin a est. Etiam ante est, placerat in mollis a, tempor et dolor. <br>
                 Proin consectetur, enim eget aliquet sollicitudin, neque libero consectetur sem, in auctor mi tellus ut massa.
-                </p>
+            </p>
 
 
-                <img src="./resources/imgs/ProfilePicEdit.png" class="img-fluid img-thumbnail">
-             </div>
+            <img src="./resources/imgs/ProfilePicEdit.png" class="img-fluid img-thumbnail">
+        </div>
 
         <div class="container text-center">
             <div class="row row-cols-2">

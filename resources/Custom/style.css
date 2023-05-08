@@ -1,4 +1,17 @@
 body {
     background-color: #FFF5E4;
-    max-width: 1080px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    max-width: 1000px;
+}
+
+.carouselcontainer {
+    position: absolute;
+    top: -10%;
+}
+
+#aboutMe {
+    margin: 15% 0 0 0;
 }
