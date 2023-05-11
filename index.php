@@ -24,22 +24,22 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav" id="navbar_nav">
+                <ul class="navbar-nav" id="navbar_nav" style="margin: 0 0 0 80%;">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+                    <a class="nav-link active" aria-current="page" href="./index.php" id="navitem01">Home</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="Features.php">Features</a>
+                    <li class="nav-item" >
+                    <a class="nav-link" href="Features.php" id="navitem02">Features</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="Pricing.php">Pricing</a>
+                    <li class="nav-item" >
+                    <a class="nav-link" href="Pricing.php" id="navitem02">Pricing</a>
                     </li>
                 </ul>
                 </div>
             </div>
         </nav>
 
-        <div class="carouselcontainer" style="margin: 50% 0 0 10%; max-width: 1000px;">
+        <div class="carouselcontainer" style="max-width: 1000px;">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-inner">
                     <div class="carousel-item active">
@@ -64,12 +64,12 @@
         </div>
 
 
-        <div class="container text-center" style="margin: 80% 0 0 0;">
+        <div class="container text-center" style="margin: 10% 0 0 0;">
             <h1>
                 About Me
             </h1>
 
-            <p>
+            <p style="margin: 10% 0 10% 0;">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fringilla eget lectus at lobortis. <br>
                 Duis egestas erat semper lacus tristique, vitae mattis magna eleifend. Proin aliquam semper lorem, <br>
                 in sagittis risus luctus ut. Nam id magna molestie quam lobortis pulvinar suscipit at diam. Fusce aliquet, <br>
@@ -79,7 +79,7 @@
             </p>
 
 
-            <img src="./resources/imgs/ProfilePicEdit.png" class="img-fluid img-thumbnail">
+            <img src="./resources/imgs/ProfilePicEdit.png" class="img-fluid img-thumbnail" style="margin: 5% 0 10% 0;">
         </div>
 
         <div class="container text-center">
