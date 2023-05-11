@@ -17,7 +17,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-sm" style=" z-index: 20;">
+        <nav class="navbar navbar-expand-sm" style=" z-index: 20; position: absolute;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="./resources/imgs/Logo_VCC.png" class="w-25"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
             </div>
         </nav>
 
-        <div class="carouselcontainer">
+        <div class="carouselcontainer" style="margin: 50% 0 0 10%; max-width: 1000px;">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-inner">
                     <div class="carousel-item active">
@@ -64,12 +64,12 @@
         </div>
 
 
-        <div id="aboutMe">
-            <h1 id="header1">
+        <div class="container text-center" style="margin: 80% 0 0 0;">
+            <h1>
                 About Me
             </h1>
 
-            <p class="text-center">
+            <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fringilla eget lectus at lobortis. <br>
                 Duis egestas erat semper lacus tristique, vitae mattis magna eleifend. Proin aliquam semper lorem, <br>
                 in sagittis risus luctus ut. Nam id magna molestie quam lobortis pulvinar suscipit at diam. Fusce aliquet, <br>
