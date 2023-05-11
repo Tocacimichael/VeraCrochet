@@ -6,16 +6,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title> Vera Cochet </title>
-        <link rel="stylesheet" href="./resources/Custom/style.css">
+<head>
+        <title> Vera Cochet </title>        
         <link rel="stylesheet" href="./resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
         <script src="https://ajax.com.googleapis.com/ajax/libs/jquery/.min.js"></script>
-        <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
+        <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>        
+        <link rel="stylesheet" href="./resources/Custom/style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
+</head>
+<body>
 
         <nav class="navbar navbar-expand-sm" style=" z-index: 20; position: absolute;">
             <div class="container-fluid">
@@ -127,5 +127,5 @@
             </div>
         </div>
     
-    </body>
+</body>
 </html>

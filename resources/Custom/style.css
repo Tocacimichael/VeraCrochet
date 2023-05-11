@@ -1,8 +1,4 @@
 body {
     background-color: #FFF5E4;
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, 0%);
     max-width: 1000px;
 }
