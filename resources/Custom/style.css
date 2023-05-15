@@ -1,27 +1,8 @@
-body {
-    max-width: 1080px !important;
-    display: table-cell;
-    vertical-align: middle;    
-    font-family: Fonts;
-    font-weight: bold;
-    background-color: #FFF5E4;
-}
-
 @font-face {
     font-family: Fonts;
     src: url(/resources/Font/FjallaOne-Regular.ttf);
 }
 
-#navitem01 {
-    color: #FFF5E4;
-    font-size: 26px;
-}
-
-#navitem01:hover {
-    font-size: 30px;
-}
-
-#navitem02 {
-    color: #FFF5E4;
-    font-size: 26px;
+body {
+    font-family: Fonts;
 }

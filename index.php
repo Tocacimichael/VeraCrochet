@@ -13,36 +13,35 @@
 <head>
         <title> Vera Cochet Craft </title>
         <script src="https://ajax.com.googleapis.com/ajax/libs/jquery/.min.js"></script>
-        <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>  
-        <link rel="stylesheet" href="./resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">     
+        <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="./resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">   
+        <link rel="stylesheet" href="./resources/Custom/style.css">  
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body class="position-absolute top-0 start-50 translate-middle-x">
 
-        <nav class="navbar navbar-expand-sm" style="z-index: 20; position: absolute;">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">
-                    <img src="./resources/imgs/Logo_VCC.png">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
-                    </li>
-                    <li class="nav-item" >
-                    <a class="nav-link" href="Features.php">Products</a>
-                    </li>
-                    <li class="nav-item" >
-                    <a class="nav-link" href="Pricing.php">Contact</a>
-                    </li>
-                </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="./resources/imgs/Logo_VCC.png" class="w-25"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Products</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Something</a>
+                </li>
+            </ul>
             </div>
+        </div>
         </nav>
 
         <div class="carouselcontainer">
@@ -85,7 +84,7 @@
             </p>
 
 
-            <img src="./resources/imgs/ProfilePicEdit.png" class="img-fluid img-thumbnail">
+            <img src="./resources/imgs/ProfilePicEdit.png" class="rounded">
         </div>
 
         <div class="container text-center">
@@ -96,7 +95,7 @@
                     ?>
                         <div class="col">
                             <h2><?= $product['title']; ?></h2>
-                            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>"  />
+                            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" />
                             <p class="lprice">€ <?= $product['price'] ?></p>
                             <a href="Frog.php">
                                 <button type="button" class="btn btn-success" data-toggle="modal">More</button>
@@ -112,20 +111,20 @@
             <div class="socials">
                 
                 <div class="inta">
-                    <img src="./resources/Icons/instagram.png" >  
+                    <img src="./resources/Icons/instagram.png" class="w-25">  
                 </div>
                 <div class="pinterest">
-                    <img src="./resources/Icons/pinterest.png" >
+                    <img src="./resources/Icons/pinterest.png" class="w-25">
                 </div>
                 <div class="twitter">
-                    <img src="./resources/Icons/twitter.png" >  
+                    <img src="./resources/Icons/twitter.png" class="w-25">  
                 </div>
                 <div class="facebook">
-                    <img src="./resources/Icons/facebook.png" >
+                    <img src="./resources/Icons/facebook.png" class="w-25">
                 </div>
             </div>
             <div class="logo_img">
-                <img src="./resources/imgs/Logo_VCC.png" alt="Logo">
+                <img src="./resources/imgs/Logo_VCC.png" alt="Logo" class="w-25">
             </div>
         </footer>
     
