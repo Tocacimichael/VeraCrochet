@@ -2,6 +2,7 @@
     $con = mysqli_connect('localhost','root');
     mysqli_select_db($con, 'veracrochet');
     $sql = "SELECT * FROM producten WHERE featured=1";
+    $featured = $con->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -24,22 +25,22 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav" id="navbar_nav" style="margin: 0 0 0 80%;">
+                <ul class="navbar-nav" id="navbar_nav" style="margin: 0 0 0 45%;">
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="./index.php" id="navitem01">Home</a>
                     </li>
                     <li class="nav-item" >
-                    <a class="nav-link" href="Features.php" id="navitem02">Features</a>
+                    <a class="nav-link" href="Features.php" id="navitem02">Products</a>
                     </li>
                     <li class="nav-item" >
-                    <a class="nav-link" href="Pricing.php" id="navitem02">Pricing</a>
+                    <a class="nav-link" href="Pricing.php" id="navitem02">Contact</a>
                     </li>
                 </ul>
                 </div>
             </div>
         </nav>
 
-        <div class="carouselcontainer" style="max-width: 1000px;">
+        <div class="carouselcontainer">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-inner">
                     <div class="carousel-item active">
@@ -49,7 +50,7 @@
                     <img src="./resources/imgs/Cherry_0.1.jpeg" class="w-100" >
                     </div>
                     <div class="carousel-item">
-                    <img src="./resources/imgs/Strawberry_0.1.jpeg" class="w-100" >
+                    <img src="./resources/imgs/miniBongs.jpeg" class="w-100" >
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -83,49 +84,53 @@
         </div>
 
         <div class="container text-center">
-            <div class="row row-cols-2">
-                <div class="col" >
-                    <img src="./resources/imgs/Bags.jpeg" class="img-fluid img-thumbnail">
-                    <h2> Bags </h2>
-                    <h2>€ 14,99 </h2>
+            <div class="row">
+                <div class="col">
+                    <?php
+                    while ($product = mysqli_fetch_assoc($featured)) :
+                    ?>
+                        <div class="col">
+                            <h2><?= $product['title']; ?></h2>
+                            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-50" />
+                            <p class="lprice">€ <?= $product['price'] ?></p>
+                            <a href="Frog.php">
+                                <button type="button" class="btn btn-success" data-toggle="modal">More</button>
+                            </a>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
                 <div class="col">
-                    <img src="./resources/imgs/Cherry_0.1.jpeg" class="img-fluid img-thumbnail">
-                    <h2> Bags </h2>
-                    <h2>€ 14,99 </h2>
-                </div>
-                <div class="col" >
-                    <img src="./resources/imgs/Frog_0.1.jpeg" class="img-fluid img-thumbnail">
-                    <h2> Bags </h2>
-                    <h2>€ 14,99 </h2>
-                </div>
-                <div class="col">
-                    <img src="./resources/imgs/Paddo_0.1.jpeg" class="img-fluid img-thumbnail">
-                    <h2> Bags </h2>
-                    <h2>€ 14,99 </h2>
-                </div>
-                <div class="col" >
-                    <img src="./resources/imgs/Dinos.jpeg" class="img-fluid img-thumbnail">
-                    <h2> Bags </h2>
-                    <h2>€ 14,99 </h2>
-                </div>
-                <div class="col">
-                    <img src="./resources/imgs/smallPaddo_0.1.jpeg" class="img-fluid img-thumbnail">
-                    <h2> Bags </h2>
-                    <h2>€ 14,99 </h2>
-                </div>
-                <div class="col" >
-                    <img src="./resources/imgs/Strawberry_0.1.jpeg" class="img-fluid img-thumbnail">
-                    <h2> Bags </h2>
-                    <h2>€ 14,99 </h2>
-                </div>
-                <div class="col">
-                    <img src="./resources/imgs/Snorlax_0.1.jpeg" class="img-fluid img-thumbnail">
-                    <h2> Bags </h2>
-                    <h2>€ 14,99 </h2>
+                    <?php
+                    while ($product = mysqli_fetch_assoc($featured)) :
+                    ?>
+                        <div class="col">
+                            <h2><?= $product['title']; ?></h2>
+                            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" />
+                            <p class="lprice">€ <?= $product['price'] ?></p>
+                            <a href="Strawberry.php">
+                                <button type="button" class="btn btn-success" data-toggle="modal">More</button>
+                            </a>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
             </div>
         </div>
+
+
+        <footer>
+            <div class="socials">
+                <h1>Socials</h1>
+                <div class="inta">
+                        
+                </div>
+                <div class="etsy">
+
+                </div>
+            </div>
+            <div class="logo_img">
+                <img src="./resources/imgs/Logo_VCC.png" alt="Logo" class="w-10">
+            </div>
+        </footer>
     
 </body>
 </html>
