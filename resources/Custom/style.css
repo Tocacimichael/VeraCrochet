@@ -1,24 +1,15 @@
-@font-face {
-    font-family: Fonts;
-    src: url(/resources/Font/FjallaOne-Regular.ttf);
-}
-
-html {
-    display: table;
-    margin: auto;
-}
-
 body {
+    max-width: 1080px !important;
+    display: table-cell;
+    vertical-align: middle;    
     font-family: Fonts;
     font-weight: bold;
     background-color: #FFF5E4;
-    max-width: 1000px;
-    display: table-cell;
-    vertical-align: middle;
 }
 
-footer {
-    background-color: #EE6983;
+@font-face {
+    font-family: Fonts;
+    src: url(/resources/Font/FjallaOne-Regular.ttf);
 }
 
 #navitem01 {
