@@ -1,7 +1,7 @@
 <?php
     $con = mysqli_connect('localhost','root');
     mysqli_select_db($con, 'veracrochet');
-    $sql = "SELECT * FROM producten WHERE featured=1";
+    $sql = "SELECT * FROM producten WHERE featured>0";
     $featured = $con->query($sql);
 
 ?>

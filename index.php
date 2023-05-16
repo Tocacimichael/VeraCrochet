@@ -3,6 +3,7 @@
     mysqli_select_db($con, 'veracrochet');
     $sql = "SELECT * FROM producten WHERE featured>0";
     $featured = $con->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body class="position-absolute top-0 start-50 translate-middle-x">
+<body class="position-absolute top-0 start-50 translate-middle-x" style=" background-color: #FFF5E4;">
 
         <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -31,13 +32,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a style="margin: 5%;" class="nav-link active" aria-current="page" href="../index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Products</a>
+                <a style="margin: 5%;" class="nav-link" href="products.php">Products</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Something</a>
+                <a style="margin: 5%;" class="nav-link" href="cart.php"><img src="./resources/Icons/cart.png" class="w-50"></a>
+                </li>
+                <li class="nav-item">
+                <a style="margin: 5%;" class="nav-link" href="account.php"><img src="./resources/Icons/profile.png" class="w-50"></a>
                 </li>
             </ul>
             </div>
@@ -84,7 +88,7 @@
             </p>
 
 
-            <img src="./resources/imgs/ProfilePicEdit.png" class="rounded">
+            <img src="./resources/imgs/ProfilePicEdit.png" class="rounded"> <br><br><br><br><br><br>
         </div>
 
         <div class="container text-center">
@@ -96,9 +100,13 @@
                         <div class="col">
                             <h2><?= $product['title']; ?></h2>
                             <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" />
-                            <p class="lprice">€ <?= $product['price'] ?></p>
-                            <a href="Frog.php">
-                                <button type="button" class="btn btn-success" data-toggle="modal">More</button>
+                            <br>
+                            <br> 
+                            <br>
+                            <p class="lprice" style="font-size: 50px;"> € <?= $product['price'] ?></p>
+                            <a href="#">
+                                <button type="button" class="btn btn-success" data-toggle="modal" style="font-size: 40px;">More</button>
+                                <br><br><br><br><br>    
                             </a>
                         </div>
                     <?php endwhile ?>
@@ -106,26 +114,41 @@
             </div>
         </div>
 
-        <footer>
+        <footer class="text-center text-white">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+                <!-- Section: Social media -->
+                <section class="d-flex">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                    ><i class="fab fa-facebook-f"><img src="./resources/icons/facebook.png" class="w-25"></i
+                ></a>
 
-            <div class="socials">
-                
-                <div class="inta">
-                    <img src="./resources/Icons/instagram.png" class="w-25">  
-                </div>
-                <div class="pinterest">
-                    <img src="./resources/Icons/pinterest.png" class="w-25">
-                </div>
-                <div class="twitter">
-                    <img src="./resources/Icons/twitter.png" class="w-25">  
-                </div>
-                <div class="facebook">
-                    <img src="./resources/Icons/facebook.png" class="w-25">
-                </div>
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                    ><i class="fab fa-twitter"><img src="./resources/icons/twitter.png" class="w-25"></i
+                ></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                    ><i class="fab fa-google"><img src="./resources/icons/pinterest.png" class="w-25"></i
+                ></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                    ><i class="fab fa-instagram"><img src="./resources/icons/instagram.png" class="w-25"></i
+                ></a>
+                </section>
+                <!-- Section: Social media -->
             </div>
-            <div class="logo_img">
-                <img src="./resources/imgs/Logo_VCC.png" alt="Logo" class="w-25">
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2023 Copyright:
+                <a class="text-white" href="https://michaeltocaci.com/">Vera Crochet Craft</a>
             </div>
+            <!-- Copyright -->
         </footer>
     
 </body>
