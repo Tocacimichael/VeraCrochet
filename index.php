@@ -35,7 +35,7 @@
                 <a style="margin: 5%;" class="nav-link active" aria-current="page" href="../index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                <a style="margin: 5%;" class="nav-link" href="products.php">Products</a>
+                <a style="margin: 5%;" class="nav-link" href="/pages/products.php">Products</a>
                 </li>
                 <li class="nav-item">
                 <a style="margin: 5%;" class="nav-link" href="cart.php"><img src="./resources/Icons/cart.png" class="w-50"></a>
@@ -104,8 +104,8 @@
                             <br> 
                             <br>
                             <p class="lprice" style="font-size: 50px;"> € <?= $product['price'] ?></p>
-                            <a href="#">
-                                <button type="button" class="btn btn-success" data-toggle="modal" style="font-size: 40px;">More</button>
+                            <a href="<?= $product['URL'] ?>">
+                                <button type="button" class="btn btn-success" data-toggle="modal" style="font-size: 40px; background-color: #FFC4C4; color: #850E35; border: none;">More</button>
                                 <br><br><br><br><br>    
                             </a>
                         </div>
@@ -114,28 +114,28 @@
             </div>
         </div>
 
-        <footer class="text-center text-white">
+        <footer class="text-center text-white rounded" style="background-color: #EE6983;" >
             <!-- Grid container -->
             <div class="container p-4 pb-0">
                 <!-- Section: Social media -->
                 <section class="d-flex">
                 <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                <a class="btn btn-floating m-1" href="" role="button"
                     ><i class="fab fa-facebook-f"><img src="./resources/icons/facebook.png" class="w-25"></i
                 ></a>
 
                 <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                <a class="btn btn-floating m-1" href="#!" role="button"
                     ><i class="fab fa-twitter"><img src="./resources/icons/twitter.png" class="w-25"></i
                 ></a>
 
                 <!-- Google -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                <a class="btn btn-floating m-1" href="#!" role="button"
                     ><i class="fab fa-google"><img src="./resources/icons/pinterest.png" class="w-25"></i
                 ></a>
 
                 <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                <a class="btn  btn-floating m-1" href="https://www.instagram.com/verascrochetcrafts/" role="button"
                     ><i class="fab fa-instagram"><img src="./resources/icons/instagram.png" class="w-25"></i
                 ></a>
                 </section>
@@ -146,7 +146,7 @@
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                 © 2023 Copyright:
-                <a class="text-white" href="https://michaeltocaci.com/">Vera Crochet Craft</a>
+                <a class="text-white" href="https://michaeltocaci.com/">Vera's Crochet Craft</a>
             </div>
             <!-- Copyright -->
         </footer>

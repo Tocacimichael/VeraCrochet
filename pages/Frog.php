@@ -72,15 +72,16 @@
         </div>
 
     
-                <footer class="text-center text-white">
+        <footer style="background-color: #EE6983;" 
+                class="text-center text-white" >
             <!-- Grid container -->
             <div class="container p-4 pb-0">
                 <!-- Section: Social media -->
                 <section class="d-flex">
                 <!-- Facebook -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                    ><i class="fab fa-facebook-f"><img src="../resources/icons/facebook.png" class="w-25"></i
-                ></a>
+                    ><i class="fab fa-facebook-f"><img src="../resources/icons/facebook.png" class="w-25"></i>
+                </a>
 
                 <!-- Twitter -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
@@ -102,9 +103,9 @@
             <!-- Grid container -->
 
             <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <div class="text-center p-3">
                 © 2023 Copyright:
-                <a class="text-white" href="https://michaeltocaci.com/">Vera Crochet Craft</a>
+                <a class="text-b" href="https://michaeltocaci.com/">Vera Crochet Craft</a>
             </div>
             <!-- Copyright -->
         </footer>
