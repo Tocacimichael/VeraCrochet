@@ -1,9 +1,10 @@
 <?php
     $con = mysqli_connect('localhost','root');
     mysqli_select_db($con, 'veracrochet');
-    $sql = "SELECT * FROM producten WHERE featured>0";
+    $sql = "SELECT * FROM producten";
     $featured = $con->query($sql);
-
+    $sql = "SELECT * FROM path";
+    $path = $con->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -29,21 +30,17 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav"> 
+            <?php
+            while ($path->fetch_assoc()):
+            ?>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                <a style="margin: 5%;" class="nav-link active" aria-current="page" href="../index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                <a style="margin: 5%;" class="nav-link" href="/pages/products.php">Products</a>
-                </li>
-                <li class="nav-item">
-                <a style="margin: 5%;" class="nav-link" href="cart.php"><img src="./resources/Icons/cart.png" class="w-50"></a>
-                </li>
-                <li class="nav-item">
-                <a style="margin: 5%;" class="nav-link" href="account.php"><img src="./resources/Icons/profile.png" class="w-50"></a>
-                </li>
-            </ul>
+                <a style="margin: 0 0 0 5%;" class="nav-link active" aria-current="page" href="../index.php">Home</a>
+                </li> 
+
+            </ul> 
+            <?php endwhile ?>
             </div>
         </div>
         </nav>
@@ -52,13 +49,13 @@
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-inner">
                     <div class="carousel-item active">
-                    <img src="./resources/imgs/Bee's.jpeg" class="w-100">
+                    <img src="./resources/imgs/Bee's.jpeg" class="w-100 rounded rounded">
                     </div>
                     <div class="carousel-item">
-                    <img src="./resources/imgs/Cherry_0.1.jpeg" class="w-100">
+                    <img src="./resources/imgs/Cherry_0.1.jpeg" class="w-100 rounded">
                     </div>
                     <div class="carousel-item">
-                    <img src="./resources/imgs/miniBongs.jpeg" class="w-100">
+                    <img src="./resources/imgs/miniBongs.jpeg" class="w-100 rounded">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -72,12 +69,14 @@
             </div>
         </div>
 
+        <br><br><br><br><br><br><br><br>
 
         <div class="container text-center">
             <h1>
                 About Me
             </h1>
 
+            <br><br>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fringilla eget lectus at lobortis. <br>
                 Duis egestas erat semper lacus tristique, vitae mattis magna eleifend. Proin aliquam semper lorem, <br>
@@ -87,11 +86,13 @@
                 Proin consectetur, enim eget aliquet sollicitudin, neque libero consectetur sem, in auctor mi tellus ut massa.
             </p>
 
+            <br><br>
 
-            <img src="./resources/imgs/ProfilePicEdit.png" class="rounded"> <br><br><br><br><br><br>
+            <img src="./resources/imgs/ProfilePicEdit.png" class="w-50 rounded"> <br><br><br><br><br><br>
         </div>
 
         <div class="container text-center">
+            <h1 class="">Products</h1> <br><br><br>
             <div class="row">
                 <div class="col">
                     <?php
@@ -99,7 +100,7 @@
                     ?>
                         <div class="col">
                             <h2><?= $product['title']; ?></h2>
-                            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" />
+                            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-50 rounded">
                             <br>
                             <br> 
                             <br>

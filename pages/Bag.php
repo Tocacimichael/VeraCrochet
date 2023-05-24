@@ -60,7 +60,7 @@
                             <br> 
                             <br>
                             <p class="lprice" style="font-size: 50px;"> € <?= $product['price'] ?></p>
-                            <p><?= $product['description'] ?></p>
+                            <p class="h3"><?= $product['description'] ?></p>
                             <a href="<?= $product ?>">
                                 <button type="button" class="btn btn-success" data-toggle="modal" style="font-size: 40px;">Add to cart</button>
                                 <br><br><br><br><br>    

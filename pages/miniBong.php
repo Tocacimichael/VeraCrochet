@@ -60,7 +60,7 @@
                             <br> 
                             <br>
                             <p class="lprice" style="font-size: 50px;"> € <?= $product['price'] ?></p>
-                            <p><?= $product['description'] ?></p>
+                            <p class="h3"><?= $product['description'] ?></p>
                             <a href="<?= $product ?>">
                                 <button type="button" class="btn btn-success" data-toggle="modal" style="font-size: 40px;">Add to cart</button>
                                 <br><br><br><br><br>    
@@ -79,22 +79,22 @@
                 <!-- Section: Social media -->
                 <section class="d-flex">
                 <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                <a class="btn btn-floating m-1" href="#!" role="button"
                     ><i class="fab fa-facebook-f"><img src="../resources/icons/facebook.png" class="w-25"></i>
                 </a>
 
                 <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                <a class="btn btn-floating m-1" href="#!" role="button"
                     ><i class="fab fa-twitter"><img src="../resources/icons/twitter.png" class="w-25"></i
                 ></a>
 
                 <!-- Google -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                <a class="btn btn-floating m-1" href="#!" role="button"
                     ><i class="fab fa-google"><img src="../resources/icons/pinterest.png" class="w-25"></i
                 ></a>
 
                 <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                <a class="btn btn-floating m-1" href="#!" role="button"
                     ><i class="fab fa-instagram"><img src="../resources/icons/instagram.png" class="w-25"></i
                 ></a>
                 </section>
