@@ -6,3 +6,15 @@
 body {
     font-family: Fonts;
 }
+
+.btn-1 {
+    font-size: 2rem; 
+    background-color: #FFC4C4; 
+    color: #850E35; 
+    border: none;
+}
+
+.btn-1:hover {
+    background-color: #EE6983;
+    transition: ease-in-out 1s;
+}

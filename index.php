@@ -1,72 +1,51 @@
 <?php
     $con = mysqli_connect('localhost','root');
     mysqli_select_db($con, 'veracrochet');
-    $sql = "SELECT * FROM producten";
+    $sql = "SELECT * FROM producten WHERE featured>0";
     $featured = $con->query($sql);
-    $sql = "SELECT * FROM path";
-    $path = $con->query($sql);
+    $sql1 = "SELECT * FROM path WHERE id";
+    $id = $con->query($sql1);
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en" style="
-    display: table;
-    margin: 0;">
+<html lang="en">
 
 <head>
         <title> Vera Cochet Craft </title>
         <script src="https://ajax.com.googleapis.com/ajax/libs/jquery/.min.js"></script>
         <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="./resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">   
-        <link rel="stylesheet" href="./resources/Custom/style.css">  
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body class="position-absolute top-0 start-50 translate-middle-x" style=" background-color: #FFF5E4;">
+<body style=" background-color: #FFF5E4;">
 
         <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="./resources/imgs/Logo_VCC.png" class="w-25"></a>
+            <a class="navbar-brand" href="index.php"><img src="./resources/imgs/Logo_VCC.png" class="w-25"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav"> 
-            <?php
-            while ($path->fetch_assoc()):
-            ?>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a style="margin: 0 0 0 5%;" class="nav-link active" aria-current="page" href="../index.php">Home</a>
-                </li> 
 
-            </ul> 
+            <ul class="navbar-nav">            
+            <?php
+            while ($path = $id->fetch_assoc()):
+            ?>
+                <li class="nav-item">
+                <a style="margin: 0 0 0 5%;" class="nav-link active" aria-current="page" href="<?= $path['url'] ?>"> 
+                    <img class="w-50" src="<?= $path['image'] ?>"> </a>
+                </li>             
             <?php endwhile ?>
+            </ul> 
             </div>
         </div>
         </nav>
 
-        <div class="carouselcontainer">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner" id="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="./resources/imgs/Bee's.jpeg" class="w-100 rounded rounded">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="./resources/imgs/Cherry_0.1.jpeg" class="w-100 rounded">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="./resources/imgs/miniBongs.jpeg" class="w-100 rounded">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+        <div class="d-flex justify-content-center">
+            <img src="./resources/imgs/Edits/topimg_1.png" alt="topimg1">
         </div>
 
         <br><br><br><br><br><br><br><br>
@@ -92,26 +71,20 @@
         </div>
 
         <div class="container text-center">
-            <h1 class="">Products</h1> <br><br><br>
-            <div class="row">
-                <div class="col">
+            <h1 class="text center">Products</h1> <br><br><br>
+            <div class="row row-cols-3">
                     <?php
                     while ($product = $featured ->fetch_assoc()):
                     ?>
                         <div class="col">
-                            <h2><?= $product['title']; ?></h2>
+                            <h2 style=" font-size: 1rem;"><?= $product['title']; ?></h2>
                             <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-50 rounded">
-                            <br>
-                            <br> 
-                            <br>
-                            <p class="lprice" style="font-size: 50px;"> € <?= $product['price'] ?></p>
+                            <p class="lprice" style="font-size: 2rem;"> € <?= $product['price'] ?></p>
                             <a href="<?= $product['URL'] ?>">
-                                <button type="button" class="btn btn-success" data-toggle="modal" style="font-size: 40px; background-color: #FFC4C4; color: #850E35; border: none;">More</button>
-                                <br><br><br><br><br>    
-                            </a>
+                                <button type="submit" class="btn btn-primary" data-toggle="modal" style="font-size: 2rem; background-color: #FFC4C4; color: #850E35; border: none;">More</button> 
+                            </a> <br><br><br>
                         </div>
                     <?php endwhile ?>
-                </div>
             </div>
         </div>
 
