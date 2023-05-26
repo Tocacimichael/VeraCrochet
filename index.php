@@ -1,9 +1,9 @@
 <?php
     $con = mysqli_connect('localhost','root');
     mysqli_select_db($con, 'veracrochet');
-    $sql = "SELECT * FROM producten WHERE featured>0";
+    $sql = "SELECT * FROM products WHERE id";
     $featured = $con->query($sql);
-    $sql1 = "SELECT * FROM path WHERE id";
+    $sql1 = "SELECT * FROM navbar WHERE id";
     $id = $con->query($sql1);
 ?>
 
@@ -17,36 +17,39 @@
         <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="./resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">   
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <me ta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body style=" background-color: #FFF5E4;">
 
         <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><img src="./resources/imgs/Logo_VCC.png" class="w-25"></a>
+        <div class="container-fluid d-flex">
+            <a class="navbar-brand justify-content-start" href="index.php">
+                <img src="./resources/imgs/Logo_VCC.png" class="w-100" style="max-width: 150px;">
+                Vera's Crochet Craft
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon">
+            </span>
             </button>
+            <div class="d-flex justify-content-end">
             <div class="collapse navbar-collapse" id="navbarNav"> 
-
-            <ul class="navbar-nav">            
-            <?php
-            while ($path = $id->fetch_assoc()):
-            ?>
-                <li class="nav-item">
-                <a style="margin: 0 0 0 5%;" class="nav-link active" aria-current="page" href="<?= $path['url'] ?>"> 
-                    <img class="w-50" src="<?= $path['image'] ?>"> </a>
-                </li>             
-            <?php endwhile ?>
-            </ul> 
+                <ul class="navbar-nav">            
+                <?php while ($url = $id->fetch_assoc()): ?>
+                    <li class="nav-item">
+                    <a  style="margin: 0 0 0 5%;" class="nav-link active" aria-current="page" href="<?= $url['url'] ?>"> 
+                        <img style="width: 50px;" src="<?= $url['image'] ?>" alt="<?= $url['title'] ?>"> </a>
+                    </li>             
+                <?php endwhile ?>
+                </ul> 
+            </div>
             </div>
         </div>
         </nav>
 
         <div class="d-flex justify-content-center">
-            <img src="./resources/imgs/Edits/topimg_1.png" alt="topimg1">
-        </div>
+            <img src="./resources/imgs/Edits/topimg_1.png" href="#" class="img-fluid">
+        </div> 
 
         <br><br><br><br><br><br><br><br>
 
@@ -77,10 +80,10 @@
                     while ($product = $featured ->fetch_assoc()):
                     ?>
                         <div class="col">
-                            <h2 style=" font-size: 1rem;"><?= $product['title']; ?></h2>
+                            <h2 style=" font-size: 1.5rem;"><?= $product['title']; ?></h2>
                             <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-50 rounded">
                             <p class="lprice" style="font-size: 2rem;"> € <?= $product['price'] ?></p>
-                            <a href="<?= $product['URL'] ?>">
+                            <a href="<?= $product['url'] ?>">
                                 <button type="submit" class="btn btn-primary" data-toggle="modal" style="font-size: 2rem; background-color: #FFC4C4; color: #850E35; border: none;">More</button> 
                             </a> <br><br><br>
                         </div>

@@ -1,16 +1,14 @@
 <?php
     $con = mysqli_connect('localhost','root');
     mysqli_select_db($con, 'veracrochet');
-    $sql = "SELECT * FROM producten WHERE featured>0";
+    $sql = "SELECT * FROM products WHERE id";
     $featured = $con->query($sql);
-    $sql = "SELECT * FROM path WHERE id>0";
-    $id = $con->query($sql);
+    $sql1 = "SELECT * FROM navbar WHERE id";
+    $id = $con->query($sql1);
 ?>
 
 <!DOCTYPE html>
-<html lang="en" style="
-    display: table;
-    margin: 0;">
+<html lang="en">
 
 <head>
         <title> Vera Cochet Craft </title>
@@ -22,53 +20,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body class="position-absolute top-0 start-50 translate-middle-x" style=" background-color: #FFF5E4;">
+<body style=" background-color: #FFF5E4;">
 
-        <nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="./resources/imgs/Logo_VCC.png" class="w-25"></a>
+            <a class="navbar-brand" href="index.php"><img src="./resources/imgs/Logo_VCC.png" class="w-25"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav"> 
-
-            <ul class="navbar-nav">            
-            <?php
-            while ($path = $id->fetch_assoc()):
-            ?>
-                <li class="nav-item">
-                <a style="margin: 0 0 0 5%;" class="nav-link active" aria-current="page" href="<?= $path['url'] ?>"> 
-                    <img class="w-50" src="<?= $path['image'] ?>"> </a>
-                </li>             
-            <?php endwhile ?>
-            </ul> 
-
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav"> 
+                <ul class="navbar-nav">            
+                <?php
+                while ($path = $id->fetch_assoc()):
+                ?>
+                    <li class="nav-item">
+                    <a  style="margin: 0 0 0 5%;" class="nav-link active" aria-current="page" href="<?= $path['url'] ?>"> 
+                        <img style="width: 50px;" src="<?= $path['image'] ?>"> </a>
+                    </li>             
+                <?php endwhile ?>
+                </ul> 
             </div>
         </div>
         </nav>
 
         
         <div class="container text-center">
-            <h1 class="">Products</h1> <br><br><br>
-            <div class="row">
-                <div class="col">
+            <h1 class="text center">Products</h1> <br><br><br>
+            <div class="row row-cols-3">
                     <?php
                     while ($product = $featured ->fetch_assoc()):
                     ?>
                         <div class="col">
-                            <h2><?= $product['title']; ?></h2>
+                            <h2 style=" font-size: 1.5rem;"><?= $product['title']; ?></h2>
                             <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-50 rounded">
-                            <br>
-                            <br> 
-                            <br>
-                            <p class="lprice" style="font-size: 50px;"> € <?= $product['price'] ?></p>
-                            <a href="<?= $product['URL'] ?>">
-                                <button type="button" class="btn btn-success" data-toggle="modal" style="font-size: 40px; background-color: #FFC4C4; color: #850E35; border: none;">Add to cart</button>
-                                <br><br><br><br><br>    
-                            </a>
+                            <p class="lprice" style="font-size: 2rem;"> € <?= $product['price'] ?></p>
+                            <a href="<?= $product['url'] ?>">
+                                <button type="submit" class="btn btn-primary" data-toggle="modal" style="font-size: 2rem; background-color: #FFC4C4; color: #850E35; border: none;">More</button> 
+                            </a> <br><br><br>
                         </div>
                     <?php endwhile ?>
-                </div>
             </div>
         </div>
 
