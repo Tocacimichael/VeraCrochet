@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect('localhost', 'root', '', 'veracrochet'); // Add the database password and name
+    @include 'function/config.php'
 ?>
 
 
@@ -10,7 +10,8 @@
         <title> Vera Cochet Craft </title>
         <script src="https://ajax.com.googleapis.com/ajax/libs/jquery/.min.js"></script>
         <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="./resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">   
+        <link rel="stylesheet" href="./resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">  
+        <link rel="stylesheet" href="./resources/Custom/style.css"> 
         <meta charset="UTF-8">
         <me ta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -59,28 +60,37 @@
     <br><br><br>
     <div class="row row-cols-3">
     <?php 
-            $select_products = "SELECT * FROM products"; // Remove the WHERE clause, or specify a condition if needed
-            $products = mysqli_query($con, $select_products);
-            while ($product = mysqli_fetch_assoc($products)): 
-            ?>
-            <div class="col" style="display: none;">
-                <h2 style="font-size: 1.5rem;"><?= $product['title']; ?></h2>
-                <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-50 rounded">
-                <p class="lprice" style="font-size: 2rem;">€ <?= $product['price'] ?></p>
-                <a href="<?= $product['url'] ?>">
-                    <button type="submit"
-                            class="btn btn-primary"
-                            data-toggle="modal"
-                            style="font-size: 2rem; background-color: #FFC4C4; color: #850E35; border: none;">
-                        More
-                    </button>
-                </a>
-                <br><br>
-                <!-- Add to Cart Button -->
-                <form action="cart.php" method="POST">
-                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                    <button type="submit" class="btn btn-success" style="font-size: 2rem;">Add to Cart</button>
-                </form><br><br><br>
+    $select_products = "SELECT * FROM products";
+    $products = mysqli_query($con, $select_products);
+    while ($product = mysqli_fetch_assoc($products)): 
+    ?>
+        <div class="col" style="display: none;">
+            <h2 style="font-size: 1.5rem;"><?= $product['title']; ?></h2>
+            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-50 rounded">
+            <p class="lprice" style="font-size: 2rem;">€ <?= $product['price'] ?></p>
+            <a href="<?= $product['url'] ?>">
+                <button id="Morebtn"
+                        type="submit"
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        style="font-size: 2rem; background-color: #FFC4C4; color: #850E35; border: none;">
+                    More
+                </button>
+            </a>
+            <br><br>
+
+            <!-- Add to Cart Button -->
+
+            <form method="POST" action="cart.php">
+            <!-- Other form fields -->
+                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" id="addbutton">Add to Cart</button>
+            </form>
+            <br>
+            <br>
+            <br>
+
                 <!-- End of Add to Cart Button -->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <script>

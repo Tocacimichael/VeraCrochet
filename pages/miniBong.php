@@ -1,11 +1,25 @@
 <?php
-    $con = mysqli_connect('localhost','root');
-    mysqli_select_db($con, 'veracrochet');
-    $sql = "SELECT * FROM products WHERE id=5";
-    $products = $con->query($sql);
-    $sql1 = "SELECT * FROM navbar WHERE id";
-    $navbar = $con->query($sql1);
+    @include '../function/config.php'
 ?>
+<?php
+session_start();
+
+// Check if the product ID is provided
+if (isset($_GET['product_id'])) {
+    $product_id = $_GET['product_id'];
+
+    // Display the product information
+    echo 'Product ID: ' . $product_id . '<br>';
+    // Display other product details
+
+    // Add to Cart button
+    echo '<form method="POST" action="addTocart.php">';
+    echo '<input type="hidden" name="product_id" value="' . $product_id . '">';
+    echo '<input type="submit" name="add_to_cart" value="Add to Cart">';
+    echo '</form>';
+}
+?>
+
 
 
 <!DOCTYPE html>
@@ -15,7 +29,8 @@
         <title> Vera Cochet Craft </title>
         <script src="https://ajax.com.googleapis.com/ajax/libs/jquery/.min.js"></script>
         <script src="../resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="../resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">   
+        <link rel="stylesheet" href="../resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">  
+        <link rel="stylesheet" href="../resources/Custom/style.css"> 
         <meta charset="UTF-8">
         <me ta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -24,7 +39,7 @@
 
         <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex">
-            <a class="navbar-brand justify-content-start" href="index.php">
+            <a class="navbar-brand justify-content-start" href="#">
                 <img src="../resources/imgs/Logo_VCC.png" class="w-100" style="max-width: 150px;">
                 Vera's Crochet Craft
             </a>
@@ -35,45 +50,69 @@
             <div class="d-flex justify-content-end">
             <div class="collapse navbar-collapse" id="navbarNav"> 
                 <ul class="navbar-nav">            
-                <?php while ($url = $navbar->fetch_assoc()): ?> 
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?= $url['url'] ?>"> 
-                        <img style="width: 50px;" src="<?= $url['image'] ?>"></a>
-                    </li>             
-                <?php endwhile ?>
+                <?php 
+                        $navbar = mysqli_query($con, "SELECT * FROM navbar");
+                        while ($url = mysqli_fetch_assoc($navbar)): 
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="<?= $url['url'] ?>">
+                                <img style="width: 50px;" src="<?= $url['image'] ?>">
+                            </a>
+                        </li>
+                 <?php endwhile ?>
                 </ul> 
             </div>
             </div>
         </div>
         </nav>
 
-        <div class="container text-center">
-            <?php while ($url = $navbar->fetch_assoc()): ?>
-            <a href="<?= $url['url'] ?>"><h2>Products</h2></a>
-            <?php endwhile ?>
-            <br><br><br>
-            <div class="row row-cols-3">
-                    <?php
-                    while ($product = $products ->fetch_assoc()):
-                    ?>
-                        <div class="col">
-                            <h2 style=" font-size: 1.5rem;"><?= $product['title']; ?></h2>
-                            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-50 rounded">
-                            <p class="lprice" style="font-size: 2rem;"> € <?= $product['price'] ?></p>
-                            <p> <?= $product['description'] ?> </p>
-                            <a href="<?= $product['url'] ?>">
-                                <button type="submit" class="btn btn-primary" data-toggle="modal" style="font-size: 2rem; background-color: #FFC4C4; color: #850E35; border: none;">More</button> 
-                            </a> <br><br><br>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                            <script>
-                                $(document).ready(function() {
-                                $('.col').fadeIn(1000); // Fade in the div over 1 second (1000 milliseconds)
-                                });
-                            </script>
-                        </div>
-                    <?php endwhile ?>
+        <br><br>
+
+
+<div class="container text-center">
+    <br><br><br>
+    <div class="row row-cols-1">
+    <?php 
+    $select_products = "SELECT * FROM products WHERE id = 5";
+    $products = mysqli_query($con, $select_products);
+    while ($product = mysqli_fetch_assoc($products)): 
+    ?>
+        <div class="col" style="display: none;">
+            <h2 style="font-size: 1.5rem;"><?= $product['title']; ?></h2>
+            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-25 rounded">
+            <p class="lprice" style="font-size: 2rem;">€ <?= $product['price'] ?></p>
+            <p><?= $product['description'] ?></p>
+            <a href="<?= $product['url'] ?>">
+            </a>
+            <br><br>
+
+            <!-- Add to Cart Button -->
+
+            <form method="POST" action="../cart.php">
+            <!-- Other form fields -->
+                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" id="addbutton">Add to Cart</button>
+            </form>
+            <br>
+            <br>
+            <br>
+
+                <!-- End of Add to Cart Button -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('.col').fadeIn(1000); // Fade in the div over 1 second (1000 milliseconds)
+                    });
+                </script>
             </div>
-        </div>
+        <?php endwhile ?>
+    </div>
+</div>
+
+        <br><br><br><br>
+
+
 
         <footer class="text-center text-white rounded" style="background-color: #EE6983;" >
             <!-- Grid container -->

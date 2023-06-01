@@ -46,19 +46,27 @@
             </div>
         </div>
         </nav>
-
-<?php
-
-@include './function/login.php'
-
+        
+<?php 
+    @include './function/register.php'
 ?>
 
     <div class="container">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <form method="POST" action="">
             <div class="mb-3">
-                <label for="username" class="form-label">Username:</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <label for="firstName" class="form-label">First Name:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
 
             <div class="mb-3">
@@ -66,17 +74,14 @@
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
 
-            <div class="d-flex justify-content-between">
-                <button type="submit" name="login" class="btn btn-primary"> Login</button>
-                <a href="register.php" class="btn btn-secondary">Register</a>
-            </div>
+            <button type="submit" name="register" class="btn btn-primary">Register</button>
         </form>
     </div>
 
     <!-- Include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-
-        <footer class="text-center text-white rounded fixed-bottom" style="background-color: #EE6983;" >
+<br><br><br><br>
+        <footer class="text-center text-white rounded" style="background-color: #EE6983;" >
             <!-- Grid container -->
             <div class="container p-4 pb-0">
                 <!-- Section: Social media -->
