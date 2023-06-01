@@ -1,9 +1,13 @@
 <?php
+@include '../function/config.php'
+?>
+
+<?php
     // Check if the register form is submitted
     if(isset($_POST['register'])) {
         // Get the entered first name, last name, email, and password
-        $firstName = $_POST['firstName'];
-        $lastName = $_POST['lastName'];
+        $firstName = $_POST['first_name'];
+        $lastName = $_POST['last_name'];
         $email = $_POST['email'];
         $password = $_POST['passwords'];
 
@@ -38,4 +42,4 @@
         // Close the database connection
         $conn->close();
     }
-    ?>
+?>

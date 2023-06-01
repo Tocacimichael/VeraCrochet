@@ -74,7 +74,10 @@
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
 
-            <button type="submit" name="register" class="btn btn-primary">Register</button>
+            <div class="d-flex justify-content-between">
+                <button type="submit" name="login" class="btn btn-primary"> Register</button>
+                <a href="account.php" class="btn btn-secondary">Login</a>
+            </div>
         </form>
     </div>
 
