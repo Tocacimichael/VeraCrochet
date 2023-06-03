@@ -53,26 +53,21 @@
 
 ?>
 
-    <div class="container">
+<div class="container">
         <h2>Login</h2>
-        <form method="POST" action="">
+        <form action="profile.php" method="POST">
             <div class="mb-3">
-                <label for="username" class="form-label">Username:</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
-
             <div class="mb-3">
-                <label for="password" class="form-label">Password:</label>
+                <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-
-            <div class="d-flex justify-content-between">
-                <button type="submit" name="login" class="btn btn-primary"> Login</button>
-                <a href="register.php" class="btn btn-secondary">Register</a>
-            </div>
+            <button type="submit" class="btn btn-primary" name="login">Login</button>
+            <a href="register.php" class="btn btn-secondary">Register</a>
         </form>
-    </div>
-
+</div>
     <!-- Include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 

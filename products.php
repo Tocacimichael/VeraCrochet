@@ -17,8 +17,6 @@ if (isset($_GET['product_id'])) {
     echo '<input type="hidden" name="product_id" value="' . $product_id . '">';
     echo '<input type="submit" name="add_to_cart" value="Add to Cart">';
     echo '</form>';
-} else {
-    echo 'No product ID specified.';
 }
 ?>
 
@@ -40,7 +38,7 @@ if (isset($_GET['product_id'])) {
 
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid d-flex">
-        <a class="navbar-brand justify-content-start" href="#">
+        <a class="navbar-brand justify-content-start" href="index.php">
             <img src="./resources/imgs/Logo_VCC.png" class="w-100" style="max-width: 150px;">
             Vera's Crochet Craft
         </a>
@@ -75,6 +73,8 @@ if (isset($_GET['product_id'])) {
     <br>
     <br>
 
+    <div class="container text-center">
+    <br><br><br>
     <div class="row row-cols-3">
     <?php 
     $select_products = "SELECT * FROM products";
@@ -86,10 +86,11 @@ if (isset($_GET['product_id'])) {
             <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-50 rounded">
             <p class="lprice" style="font-size: 2rem;">€ <?= $product['price'] ?></p>
             <a href="<?= $product['url'] ?>">
-                <button type="submit"
-                        class="btn btn-primary"
+                <button id="Morebtn"
+                        type="submit"
+                        class="btn btn-primary rounded-pill"
                         data-toggle="modal"
-                        style="font-size: 2rem; background-color: #FFC4C4; color: #850E35; border: none;">
+                        style="font-size: 1.5rem; background-color: #FFC4C4; color: #850E35; border: none;">
                     More
                 </button>
             </a>
@@ -99,24 +100,24 @@ if (isset($_GET['product_id'])) {
 
             <form method="POST" action="cart.php">
             <!-- Other form fields -->
-                <input type="hidden" name="product_id" value="1">
+                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                 <input type="hidden" name="quantity" value="1">
                 <button type="submit" id="addbutton">Add to Cart</button>
             </form>
+            <br>
+            <br>
+            <br>
 
-            <br>
-            <br>
-            <br>
-            <!-- End of Add to Cart Button -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    $('.col').fadeIn(1000);
-                });
-            </script>
-        </div>
+                <!-- End of Add to Cart Button -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('.col').fadeIn(1000); // Fade in the div over 1 second (1000 milliseconds)
+                    });
+                </script>
+            </div>
         <?php endwhile ?>
-
+    </div>
     </div>
 </div>
 

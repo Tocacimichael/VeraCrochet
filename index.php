@@ -47,8 +47,8 @@
         </div>
         </nav>
 
-        <div class="d-flex justify-content-center topimg">'
-            <a href="">
+        <div class="d-flex justify-content-center topimg">
+            <a href="./products.php">
             <img src="./resources/imgs/Edits/topimg_1.png" href="#" class="img-fluid">
             </a>
         </div> 
@@ -71,9 +71,9 @@
             <a href="<?= $product['url'] ?>">
                 <button id="Morebtn"
                         type="submit"
-                        class="btn btn-primary"
+                        class="btn btn-primary rounded-pill"
                         data-toggle="modal"
-                        style="font-size: 2rem; background-color: #FFC4C4; color: #850E35; border: none;">
+                        style="font-size: 1.5rem; background-color: #FFC4C4; color: #850E35; border: none;">
                     More
                 </button>
             </a>

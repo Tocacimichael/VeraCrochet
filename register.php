@@ -46,44 +46,41 @@
             </div>
         </div>
         </nav>
-        
-<?php 
-    @include './function/register.php'
+
+<?php
+
+@include './function/register.php'
+
 ?>
 
     <div class="container">
-        <h2>Register</h2>
-        <form method="POST" action="">
+        <h2>Login</h2>
+        <form action="register.php" method="POST">
             <div class="mb-3">
-                <label for="firstName" class="form-label">First Name:</label>
+                <label for="firstName" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="firstName" name="firstName" required>
             </div>
-
             <div class="mb-3">
-                <label for="lastName" class="form-label">Last Name:</label>
+                <label for="lastName" class="form-label">Last Name</label>
                 <input type="text" class="form-control" id="lastName" name="lastName" required>
             </div>
-
             <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
+                <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
-
             <div class="mb-3">
-                <label for="password" class="form-label">Password:</label>
+                <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-
-            <div class="d-flex justify-content-between">
-                <button type="submit" name="login" class="btn btn-primary"> Register</button>
-                <a href="account.php" class="btn btn-secondary">Login</a>
-            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
 
+    <br><br><br><br>
+
     <!-- Include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-<br><br><br><br>
+
         <footer class="text-center text-white rounded" style="background-color: #EE6983;" >
             <!-- Grid container -->
             <div class="container p-4 pb-0">
