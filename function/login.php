@@ -1,22 +1,24 @@
 <?php
-@include '../function/config.php'
-?>
+// Include the config file for database connection
+@include '../function/config.php';
 
-<?php
-    // Check if the login form is submitted
-    if(isset($_POST['login'])) {
-        // Get the entered username and password
-        $username = $_POST['email'];
-        $password = $_POST['passwords'];
+// Check if the login form is submitted
+if (isset($_POST['login'])) {
+    // Get the entered email and password
+    $email = $_POST['email'];
+    $password = $_POST['passwords'];
 
-        // Validate the credentials (you can modify this part according to your requirements)
-        if($username === 'email' && $password === 'passwords') {
-            // Redirect to the profile page after successful login
-            header('Location: profile.php');
-            exit;
-        } else {
-            // Display an error message
-            echo '<div class="alert alert-danger">Invalid username or password!</div>';
-        }
+    // Validate the credentials by querying the database
+    $query = "SELECT * FROM users WHERE email = '$email' AND passwords = '$password'";
+    $result = mysqli_query($con, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        // Redirect to the profile page after successful login
+        header('Location: ../profile.php');
+        exit;
+    } else {
+        // Display an error message
+        echo '<div class="alert alert-danger">Invalid email or password!</div>';
     }
+}
 ?>
