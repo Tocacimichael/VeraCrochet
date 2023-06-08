@@ -1,6 +1,6 @@
 <?php
 // Include the config file for database connection
-@include '../function/config.php';
+@include 'config.php';
 
 // Check if the login form is submitted
 if (isset($_POST['login'])) {

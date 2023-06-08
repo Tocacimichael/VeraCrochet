@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Registration failed
         echo "Registration failed. Please try again.";
-    }
+    }   
+
+
 }
 ?>

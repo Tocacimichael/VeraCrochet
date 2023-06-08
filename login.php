@@ -49,13 +49,13 @@
 
 <?php
 
-@include './function/login.php'
+@include '/function/login.php'
 
 ?>
 
 <div class="container">
         <h2>Login</h2>
-        <form action="profile.php" method="POST">
+        <form action="function/login.php" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required>
@@ -68,6 +68,7 @@
             <a href="register.php" class="btn btn-secondary">Register</a>
         </form>
 </div>
+
     <!-- Include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 
