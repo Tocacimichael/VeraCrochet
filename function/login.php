@@ -6,7 +6,7 @@
 if (isset($_POST['login'])) {
     // Get the entered email and password
     $email = $_POST['email'];
-    $password = $_POST['passwords'];
+    $password = $_POST['password'];
 
     // Validate the credentials by querying the database
     $query = "SELECT * FROM users WHERE email = '$email' AND passwords = '$password'";

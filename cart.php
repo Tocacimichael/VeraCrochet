@@ -47,7 +47,7 @@
 </nav>
 
 <div class="container d-flex justify-content-center">
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Product</th>
@@ -89,9 +89,11 @@
             </tr>
         </tbody>
     </table>
+    <a href="checkout.php" class="btn btn-secondary p-2" style="height: 80px;">
+        Proceed to Checkout
+    </a>
 </div>
 <script src="./function/addremove.js"></script>
-
 
 <footer class="text-center text-white rounded fixed-bottom" style="background-color: #EE6983;">
     <!-- Grid container -->

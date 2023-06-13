@@ -1,6 +1,7 @@
 <?php
 @include 'function/config.php';
 @include 'function/profilefun.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -72,6 +73,14 @@
                             data-bs-target="#registrationModal">
                             Update Address
                         </button>
+                        <div class="d-inline">
+                            <a href="checkout.php" class="btn btn-primary">
+                                Go to Checkout
+                            </a>
+                            <a href="orders.php" class="btn btn-primary">
+                                My Orders
+                            </a>
+                        </div>
 
                         <!-- Modal -->
                         <div class="modal fade" id="registrationModal" tabindex="-1"
@@ -85,7 +94,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <!-- Address update form -->
-                                        <form method="POST" action="/function/profile.php">
+                                        <form method="POST" action="function/profilefun.php">
                                             <div class="mb-3">
                                                 <label for="street_name" class="form-label">Street Name</label>
                                                 <input type="text" class="form-control" id="street_name"
@@ -122,7 +131,7 @@
     </div>
 
     <br><br>
-    <footer class="text-center text-white rounded" style="background-color: #EE6983;">
+    <footer class="text-center text-white rounded fixed-bottom" style="background-color: #EE6983;">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
             <!-- Section: Social media -->

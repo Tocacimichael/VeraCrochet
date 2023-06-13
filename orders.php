@@ -1,88 +1,67 @@
 <?php
 @include 'function/config.php';
-@include 'function/orders.php';
+@include 'function/profilefun.php';
+@include 'function/order.php';
+
+
+// Check if the user is logged in
+if (!isLoggedIn()) {
+    header("Location: login.php");
+    exit;
+}
+
+// Get the user's order history
+$userID = $_SESSION['user_id'];
+$orders = mysqli_query($con, "SELECT * FROM orders WHERE user_id = '$userID' ORDER BY order_date DESC");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Vera Cochet Craft</title>
-    <script src="https://ajax.com.googleapis.com/ajax/libs/jquery/.min.js"></script>
-    <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
+    <title>My Orders</title>
     <link rel="stylesheet" href="./resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./resources/Custom/style.css">
-    <meta charset="UTF-8">
-    <meta street_name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .order-card {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+    </style>
 </head>
 
-<body style="background-color: #FFF5E4;">
+<body>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid d-flex">
-            <a class="navbar-brand justify-content-start" href="#">
-                <img src="./resources/imgs/Logo_VCC.png" class="w-100" style="max-width: 150px;">
-                Vera's Crochet Craft
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                </span>
-            </button>
-            <div class="d-flex justify-content-end">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <?php
-                        $navbar = mysqli_query($con, "SELECT * FROM navbar");
-                        while ($url = mysqli_fetch_assoc($navbar)) :
-                        ?>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<?= $url['url'] ?>">
-                                <img style="width: 50px;" src="<?= $url['image'] ?>">
-                            </a>
-                        </li>
-                        <?php endwhile ?>
-                    </ul>
-                </div>
+<div class="container mt-5">
+        <h2>My Orders</h2>
+        <hr>
+
+        <?php while ($order = mysqli_fetch_assoc($orders)) : ?>
+            <div class="order-card">
+                <h4>Order ID: <?= $order['id'] ?></h4>
+                <p>Date: <?= $order['order_date'] ?></p>
+                <p>Order Total: $<?= $order['total_amount'] ?></p>
+                <h5>Order Items:</h5>
+
+                <?php
+                $orderID = $order['id'];
+                $orderItems = mysqli_query($con, "SELECT * FROM order_items WHERE order_id = '$orderID'");
+                while ($item = mysqli_fetch_assoc($orderItems)) :
+                    $productID = $item['product_id'];
+                    $product = mysqli_query($con, "SELECT * FROM products WHERE id = '$productID'");
+                    $productData = mysqli_fetch_assoc($product);
+                ?>
+                    <div class="mb-3">
+                        <h6><?= $productData['title'] ?></h6>
+                        <p>Price: $<?= $productData['price'] ?></p>
+                        <p>Quantity: <?= $item['quantity'] ?></p>
+                    </div>
+                <?php endwhile; ?>
             </div>
-        </div>
-    </nav>
+        <?php endwhile; ?>
 
-
-    <br><br>
-    <footer class="text-center text-white rounded" style="background-color: #EE6983;">
-        <!-- Grid container -->
-        <div class="container p-4 pb-0">
-            <!-- Section: Social media -->
-            <section class="d-flex">
-                <!-- Facebook -->
-                <a class="btn btn-floating m-1" href="" role="button"><i class="fab fa-facebook-f"><img
-                            src="./resources/icons/facebook.png" style="width: 50px;"></i></a>
-
-                <!-- Twitter -->
-                <a class="btn btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"><img
-                            src="./resources/icons/twitter.png" style="width: 50px;"></i></a>
-
-                <!-- Google -->
-                <a class="btn btn-floating m-1" href="#!" role="button"><i class="fab fa-google"><img
-                            src="./resources/icons/pinterest.png" style="width: 50px;"></i></a>
-
-                <!-- Instagram -->
-                <a class="btn  btn-floating m-1" href="https://www.instagram.com/verascrochetcrafts/" role="button"><i
-                        class="fab fa-instagram"><img src="./resources/icons/instagram.png"
-                            style="width: 50px;"></i></a>
-            </section>
-            <!-- Section: Social media -->
-        </div>
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2023 Copyright:
-            <a class="text-white" href="https://michaeltocaci.com/">Vera's Crochet Craft</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    </div>
 
 </body>
 

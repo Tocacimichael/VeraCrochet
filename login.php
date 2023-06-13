@@ -1,5 +1,6 @@
 <?php
-    @include 'function/config.php'
+    @include 'function/config.php';
+    @include '/function/login.php';
 ?>
 
 
@@ -47,11 +48,6 @@
         </div>
         </nav>
 
-<?php
-
-@include '/function/login.php'
-
-?>
 
 <div class="container">
         <h2>Login</h2>
