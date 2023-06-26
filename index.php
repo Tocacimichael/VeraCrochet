@@ -56,7 +56,7 @@
         <br><br>
 
 
-        <div class="container text-center">
+<div class="container text-center">
     <br><br><br>
     <div class="row row-cols-3">
     <?php 

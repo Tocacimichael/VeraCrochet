@@ -1,20 +1,23 @@
 <?php
-@include 'function/config.php';
-@include 'function/profilefun.php';
+require './function/config.php';
+require './function/profilefun.php';
 
+
+// Fetch user data
+$userData = getUserData();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en; nl;">
 
 <head>
-    <title>Vera Cochet Craft</title>
-    <script src="https://ajax.com.googleapis.com/ajax/libs/jquery/.min.js"></script>
+    <title>Vera Crochet Craft</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./resources/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./resources/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./resources/Custom/style.css">
     <meta charset="UTF-8">
-    <meta street_name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body style="background-color: #FFF5E4;">
@@ -27,8 +30,7 @@
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                </span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="d-flex justify-content-end">
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -37,11 +39,11 @@
                         $navbar = mysqli_query($con, "SELECT * FROM navbar");
                         while ($url = mysqli_fetch_assoc($navbar)) :
                         ?>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<?= $url['url'] ?>">
-                                <img style="width: 50px;" src="<?= $url['image'] ?>">
-                            </a>
-                        </li>
+                            <li class="nav-values">
+                                <a class="nav-link active" aria-current="page" href="<?= $url['url'] ?>">
+                                    <img style="width: 50px;" src="<?= $url['image'] ?>">
+                                </a>
+                            </li>
                         <?php endwhile ?>
                     </ul>
                 </div>
@@ -49,88 +51,77 @@
         </div>
     </nav>
 
+
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card">
-                    <?php 
-                    $userData = getUserData();
-                    $address = $userData['address'];
-                    ?>
                     <div class="card-body">
-                        <h5 class="card-title"><?= $userData['user']['first_name'] ?> <?= $userData['user']['last_name'] ?></h5>
-                        <br>
-                        <?php if ($address !== null) : ?>
-                            <h6 class="card-subtitle mb-2 text"><?= $address['street_name'] ?></h6>
-                            <br>
-                            <h6 class="card-subtitle mb-2 text"><?= $address['postal_code'] ?></h6>
-                            <br>
-                            <h6 class="card-subtitle mb-2 text"><?= $address['city'] ?></h6>
+                        <?php if ($userData) : ?>
+                            <h5 class="card-title">
+                                <?= $userData['users']['first_name'] ?? '' ?>
+                                <?= $userData['users']['last_name'] ?? '' ?><br><br>
+                                <?= $userData['address']['street_name'] ?? '' ?><br><br>
+                                <?= $userData['address']['postal_code'] ?? '' ?><br><br>
+                                <?= $userData['address']['city'] ?? '' ?><br>
+                            </h5>
                         <?php endif; ?>
 
-                        <!-- Button to trigger the modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#registrationModal">
-                            Update Address
-                        </button>
-                        <div class="d-inline">
-                            <a href="checkout.php" class="btn btn-primary">
-                                Go to Checkout
-                            </a>
-                            <a href="orders.php" class="btn btn-primary">
-                                My Orders
-                            </a>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="registrationModal" tabindex="-1"
-                            aria-labelledby="registrationModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="registrationModalLabel">Update Address</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- Address update form -->
-                                        <form method="POST" action="function/profilefun.php">
-                                            <div class="mb-3">
-                                                <label for="street_name" class="form-label">Street Name</label>
-                                                <input type="text" class="form-control" id="street_name"
-                                                    name="street_name" value="<?= $address !== null ? $address['street_name'] : '' ?>" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="postal_code" class="form-label">Postal Code</label>
-                                                <input type="text" class="form-control" id="postal_code"
-                                                    name="postal_code" value="<?= $address !== null ? $address['postal_code'] : '' ?>" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="city" class="form-label">City</label>
-                                                <input type="text" class="form-control" id="city" name="city"
-                                                    value="<?= $address !== null ? $address['city'] : '' ?>" required>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">
-                                                <?php
-                                                if (isset($_SESSION['notification'])) {
-                                                    echo '<div class="notification">' . $_SESSION['notification'] . '</div>';
-                                                    unset($_SESSION['notification']);
-                                                }
-                                                ?>                                                
-                                                Update
-                                            </button>
-                                        </form>
-                                    </div>
+                        <div class="container mt-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>My Orders</h5>
                                 </div>
+
+
                             </div>
+                        <br><br>
+                    <!--- button to trigger the modal -->
+                        <div class="d-inline">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#updateAddressModal">
+                                Update Address
+                            </button>
                         </div>
+ 
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> <br><br>
+
+    <!-- Modal for updating the address -->
+    <div class="modal fade" id="updateAddressModal" tabindex="-1" aria-labelledby="updateAddressModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateAddressModalLabel">Update Address</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="">
+                        <div class="mb-3">
+                            <label for="street_name" class="form-label">Street Name</label>
+                            <input type="text" class="form-control" id="street_name" name="street_name"                        </div>
+                        <div class="mb-3">
+                            <label for="postal_code" class="form-label">Postal Code</label>
+                            <input type="text" class="form-control" id="postal_code" name="postal_code">
+                        </div>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" class="form-control" id="city" name="city">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>  
 
     <br><br>
+
     <footer class="text-center text-white rounded fixed-bottom" style="background-color: #EE6983;">
         <!-- Grid container -->
         <div class="container p-4 pb-0">

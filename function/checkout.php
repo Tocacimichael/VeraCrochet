@@ -6,7 +6,7 @@
 function processCheckout($name, $address, $phone, $cartData)
 {
     global $con;
-
+                                                                                                                                                                                                                                                
     // Insert user data into the users table
     $query = "INSERT INTO users (first_name, last_name, email) VALUES ('', '', '', '')";
     $result = mysqli_query($con, $query);

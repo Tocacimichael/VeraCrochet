@@ -29,6 +29,7 @@
                 <span class="navbar-toggler-icon">
                 </span>
             </button>
+
             <div class="d-flex justify-content-end">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
@@ -58,48 +59,48 @@
                     <div class="card-body">
                         <h5 class="card-title">Your Cart</h5>
                         <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            @include './function/cartfunc.php';
-            $totalPrice = 0; // Initialize total price variable
-            foreach ($cart as $product_id => $quantity) {
-                if (isset($products[$product_id])) {
-                    $product = $products[$product_id];
-                    $subtotal = $product['price'] * $quantity;
-                    $totalPrice += $subtotal;
-                    ?>
-                    <tr>
-                        <td>
-                            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" style="width: 50px;">
-                            <?= $product['title'] ?>
-                        </td>
-                        <td><?= $quantity ?></td>
-                        <td>€<?= $product['price'] ?></td>
-                        <td>
-                            <form method="post" action="cart.php">
-                                <input type="hidden" name="remove_product_id" value="<?= $product_id ?>">
-                                <button type="submit" class="btn btn-sm btn-danger">Remove</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <?php
-                }
-            }
-            ?>
-            <tr>
-                <td colspan="3">Total Price:</td>
-                <td>€<?= $totalPrice ?></td>
-            </tr>
-        </tbody>
-    </table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                @include './function/cartfunc.php';
+                                $totalPrice = 0; // Initialize total price variable
+                                foreach ($cart as $product_id => $quantity) {
+                                    if (isset($products[$product_id])) {
+                                        $product = $products[$product_id];
+                                        $subtotal = $product['price'] * $quantity;
+                                        $totalPrice += $subtotal;
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" style="width: 50px;">
+                                                <?= $product['title'] ?>
+                                            </td>
+                                            <td><?= $quantity ?></td>
+                                            <td>€<?= $product['price'] ?></td>
+                                            <td>
+                                                <form method="post" action="cart.php">
+                                                    <input type="hidden" name="remove_product_id" value="<?= $product_id ?>">
+                                                    <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                                <tr>
+                                    <td colspan="3">Total Price:</td>
+                                    <td>€<?= $totalPrice ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -107,7 +108,7 @@
                    <div class="card mt-5">
                     <div class="card-body">
                         <h5 class="card-title">Checkout</h5>
-                        <form action="./function/checkout-success.php" method="POST">
+                        <form action="./payment.php" method="POST">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
@@ -133,9 +134,9 @@
                                 <input type="text" class="form-control" id="country" name="country" required>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Place Order</button>
+                            <button type="submit" class="btn btn-primary">Proceed to payment</button>
                         </form>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>

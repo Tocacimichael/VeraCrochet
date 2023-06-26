@@ -74,7 +74,7 @@ if (isset($_GET['product_id'])) {
             <br><br><br>
             <div class="row row-cols-1">
                 <?php 
-                $select_products = "SELECT * FROM products WHERE id = 2";
+                $select_products = "SELECT * FROM products WHERE id = 7";
                 $products = mysqli_query($con, $select_products);
                 while ($product = mysqli_fetch_assoc($products)): 
                 ?>

@@ -89,7 +89,7 @@
             </tr>
         </tbody>
     </table>
-    <a href="checkout.php" class="btn btn-secondary p-2" style="height: 80px;">
+    <a href="payment.php" class="btn btn-secondary p-2" style="height: 80px;">
         Proceed to Checkout
     </a>
 </div>

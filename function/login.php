@@ -9,7 +9,7 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
 
     // Validate the credentials by querying the database
-    $query = "SELECT * FROM users WHERE email = '$email' AND passwords = '$password'";
+    $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
     $result = mysqli_query($con, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {

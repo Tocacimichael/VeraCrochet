@@ -24,26 +24,28 @@ function removeFromCart($product_id) {
 }
 
 // Check if the product ID and quantity are provided in the request
-if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
-    $product_id = $_POST['product_id']; // Get the product ID from the request
-    $quantity = $_POST['quantity']; // Get the quantity from the request
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
+        $product_id = $_POST['product_id']; // Get the product ID from the request
+        $quantity = $_POST['quantity']; // Get the quantity from the request
 
-    // Call the addToCart() function with the product ID and quantity
-    addToCart($product_id, $quantity);
+        // Call the addToCart() function with the product ID and quantity
+        addToCart($product_id, $quantity);
 
-    header('Location: cart.php'); // Redirect to the cart page
-    exit();
-}
+        header('Location: cart.php'); // Redirect to the cart page
+        exit();
+    }
 
-// Check if the product ID is provided in the request to remove from cart
-if (isset($_POST['remove_product_id'])) {
-    $remove_product_id = $_POST['remove_product_id']; // Get the product ID from the request
+    // Check if the product ID is provided in the request to remove from cart
+    if (isset($_POST['remove_product_id'])) {
+        $remove_product_id = $_POST['remove_product_id']; // Get the product ID from the request
 
-    // Call the removeFromCart() function with the product ID
-    removeFromCart($remove_product_id);
+        // Call the removeFromCart() function with the product ID
+        removeFromCart($remove_product_id);
 
-    header('Location: cart.php'); // Redirect to the cart page
-    exit();
+        header('Location: cart.php'); // Redirect to the cart page
+        exit();
+    }
 }
 
 // Retrieve the cart from the session
@@ -65,4 +67,5 @@ if (!empty($product_ids)) {
         }
     }
 }
+
 ?>

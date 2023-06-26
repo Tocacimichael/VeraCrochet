@@ -69,46 +69,46 @@ if (isset($_GET['product_id'])) {
         <br><br>
 
 
-<div class="container text-center">
-    <br><br><br>
-    <div class="row row-cols-1">
-    <?php 
-    $select_products = "SELECT * FROM products WHERE id = 10";
-    $products = mysqli_query($con, $select_products);
-    while ($product = mysqli_fetch_assoc($products)): 
-    ?>
-        <div class="col" style="display: none;">
-            <h2 style="font-size: 1.5rem;"><?= $product['title']; ?></h2>
-            <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-25 rounded">
-            <p class="lprice" style="font-size: 2rem;">€ <?= $product['price'] ?></p>
-            <p><?= $product['description'] ?></p>
-            <a href="<?= $product['url'] ?>">
-            </a>
-            <br><br>
+    <div class="container text-center">
+        <br><br><br>
+        <div class="row row-cols-1">
+        <?php 
+        $select_products = "SELECT * FROM products WHERE id = 2";
+        $products = mysqli_query($con, $select_products);
+        while ($product = mysqli_fetch_assoc($products)): 
+        ?>
+            <div class="col" style="display: none;">
+                <h2 style="font-size: 1.5rem;"><?= $product['title']; ?></h2>
+                <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="w-25 rounded">
+                <p class="lprice" style="font-size: 2rem;">€ <?= $product['price'] ?></p>
+                <p><?= $product['description'] ?></p>
+                <a href="<?= $product['url'] ?>">
+                </a>
+                <br><br>
 
-            <!-- Add to Cart Button -->
+                <!-- Add to Cart Button -->
 
-            <form method="POST" action="../cart.php">
-            <!-- Other form fields -->
-                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                <input type="hidden" name="quantity" value="1">
-                <button type="submit" id="addbutton">Add to Cart</button>
-            </form>
-            <br>
-            <br>
-            <br>
+                <form method="POST" action="../cart.php">
+                <!-- Other form fields -->
+                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" id="addbutton">Add to Cart</button>
+                </form>
+                <br>
+                <br>
+                <br>
 
-                <!-- End of Add to Cart Button -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                <script>
-                    $(document).ready(function() {
-                        $('.col').fadeIn(1000); // Fade in the div over 1 second (1000 milliseconds)
-                    });
-                </script>
-            </div>
-        <?php endwhile ?>
+                    <!-- End of Add to Cart Button -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(function() {
+                            $('.col').fadeIn(1000); // Fade in the div over 1 second (1000 milliseconds)
+                        });
+                    </script>
+                </div>
+            <?php endwhile ?>
+        </div>
     </div>
-</div>
 
         <br><br><br><br>
 

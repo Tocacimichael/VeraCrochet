@@ -60,7 +60,7 @@
     <br><br><br>
     <div class="row row-cols-3">
     <?php 
-    $select_products = "SELECT * FROM products";
+    $select_products = "SELECT * FROM products WHERE id = 5";
     $products = mysqli_query($con, $select_products);
     while ($product = mysqli_fetch_assoc($products)): 
     ?>

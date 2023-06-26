@@ -9,17 +9,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $user_id = $_POST['user_id'];
+
 
     // Perform any necessary validation or sanitization on the input data
 
     // Insert the new user into the database
-    $query = "INSERT INTO users (first_name, last_name, email, passwords) VALUES ('$firstName', '$lastName', '$email', '$password')";
+    $query = "INSERT INTO users (first_name, last_name, email, password) VALUES ('$firstName', '$lastName', '$email', '$password')";
     $result = mysqli_query($con, $query);
 
     if ($result) {
         // Registration success
         echo "Registration successful!";
-        header('Location: account.php');
+        header('Location: login.php');
     } else {
         // Registration failed
         echo "Registration failed. Please try again.";
