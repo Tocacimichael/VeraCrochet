@@ -53,12 +53,12 @@
 
 ?>
 
-    <div class="container">
+<div class="container">
         <h2>Login</h2>
         <form action="register.php" method="POST">
             <div class="mb-3">
                 <label for="firstName" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                <input type="text" class="form-control" id="firstName" name="firstName" required> <!-- add error for each section for more definitive answer  -->
             </div>
             <div class="mb-3">
                 <label for="lastName" class="form-label">Last Name</label>
@@ -74,6 +74,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
+        
     </div>
 
     <br><br><br><br>
